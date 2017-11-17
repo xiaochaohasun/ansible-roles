@@ -55,16 +55,17 @@ configured:
 
 2)Start jumpserver
 
- . Use the browser to open the url: http://IP:8000/
+	. Use the browser to open the url: http://IP:8000/
  
- . Log in with admin accout and password admin.
+    . Log in with admin accout and password admin.
  
- . The web interface on the left column of the "application" - > "terminal" in the registration of the two procedures account,
-    choose to accept!
+    . The web interface on the left column of the "application" - > "terminal" in the registration of the two procedures account,
+      choose to accept!
    
- . Coco is SSH terminal (loging address: ssh://IP:2222)
+    . Coco is SSH terminal (loging address: ssh://IP:2222)
  
- . Luna is the Web terminal mode (http://IP:5000)
+    . Luna is the Web terminal mode (http://IP:5000)
+
 
 
 Dependencies
