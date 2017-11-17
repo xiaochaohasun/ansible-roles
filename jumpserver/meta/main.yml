@@ -4,7 +4,7 @@ galaxy_info:
   company: FreeWorks
   licenses: BSD
   license: license
-  min_ansible_version: 1.2
+  min_ansible_version: 1.4
   platforms:
   - name: Centos 
     versions:
