@@ -54,6 +54,7 @@ configured:
 	     when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
 2)Start jumpserver
+
  . Use the browser to open the url: http://IP:8000/
  
  . Log in with admin accout and password admin.
