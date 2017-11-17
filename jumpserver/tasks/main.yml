@@ -1,0 +1,82 @@
+---
+
+- name: yum install epel
+  yum: name=epel-release
+  tags:
+    - install_epel
+
+- name: yum soft install
+  yum: name={{ item }}
+  with_items:
+    - wget
+    - xz
+    - gcc
+    - gcc-c++
+    - automake
+    - zlib-devel
+    - openssl-devel
+    - git
+    - redis
+    - mariadb 
+    - mariadb-devel
+    - mariadb-server 
+    - expect
+    - coreutils 
+
+- name: unpkg py
+  unarchive: src=Python-{{ py_version }}.tar.xz dest=/tmp/
+  tags:
+    - unpkg_py
+
+- name: install py3
+  script: install_py3.sh {{ py_version }}  2>&1 | tee -a {{ install_log }}
+  tags:
+    - install_py3
+
+- name: start redis
+  service: name=redis state=started enabled=yes
+  tags:
+    - start_redis
+
+- name: start mariadb
+  service: name=mariadb state=started enabled=yes
+  tags:
+    - start_mariadb
+
+- name: install jumpserver
+  script: install_jumpserver.sh  2>&1 | tee -a {{ install_log }}
+  tags:
+    - install_jump
+
+- name: create database and privileges jumpserver
+  script: priv_mysql.sh {{ mariadb_dbname }} {{ mariadb_priv_user }} {{ mariadb_priv_pwd }} 2>&1 | tee -a {{ install_log }}
+  tags: 
+    - priv_mysql
+
+- name: cp config
+  template: src=config.py.j2 dest=/opt/jumpserver/config.py
+  tags:
+    - cp_config
+
+- name: init database and data
+  script: init_jumpserver.sh 2>&1 | tee -a {{ install_log }}
+  tags:
+    - init_jump
+
+- name: install coco
+  script: install_coco.sh {{ jump_port }} 2>&1 | tee -a {{ install_log }}
+  tags:
+    - install_coco
+
+- name: install luna 
+  script: install_luna.sh {{ jump_port }} 2>&1 | tee -a {{ install_log }}
+  tags:
+    - install_luna
+
+- name: start jumpserver & coco & luna
+  script: start_all.sh 2>&1 | tee -a {{ install_log }} 
+
+- name: clear pkg
+  file: path=/tmp/Python-{{ py_version }} state=absent
+  tags:
+    - clear_pkg

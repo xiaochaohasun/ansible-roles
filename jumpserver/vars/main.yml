@@ -1,0 +1,21 @@
+---
+
+install_log: /tmp/install_jumpserver.log
+py_version: 3.6.1
+mariadb_dbname: jumpserver
+mariadb_priv_user: jumpserver
+mariadb_priv_pwd: jumpserver
+#config.py.j2
+db_engine : "'mysql'"
+db_host : "'127.0.0.1'"
+db_port : "'3306'"
+email_host : "'smtp.163.com'"
+email_port : 25
+email_host_user : "'hhz_alert@163.com'"
+email_host_password : "'Zong2015'" #auth code,not pwd
+email_use_ssl : True
+email_use_tls : False
+email_subject_prefix : "'[Jumpserver]'"
+site_url : "'http://localhost:8000'"
+#jump_port
+jump_port: 8000

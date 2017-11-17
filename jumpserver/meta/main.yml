@@ -1,0 +1,13 @@
+galaxy_info:
+  author: xiaochaohasun
+  description: jumpserver v4.0 auto install
+  company: FreeWorks
+  licenses: BSD
+  license: license
+  min_ansible_version: 1.2
+  platforms:
+  - name: Centos 
+    versions:
+    - 7 
+  galaxy_tags: []
+dependencies: []
