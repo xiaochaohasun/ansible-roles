@@ -2,8 +2,7 @@ Jumpserver
 =====
 
 This role installs and configures the jumpserver. The user can specify
-any configuration parameters they wish to apply their site. Any number of
-sites can be added with configurations of your choice.
+any configuration parameters they wish to apply.
 
 Requirements
 ------------
